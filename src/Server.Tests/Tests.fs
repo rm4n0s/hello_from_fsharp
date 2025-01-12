@@ -11,15 +11,15 @@ let ``test from an unknown to a friend to a spammer`` () =
     let num = rnd.Next(900) + 1
     let name = $"manos{num}"
     let output = 
-        get $"http://localhost:5000/hello_from/{name}"     
+        get $"http://localhost:5000/hello/{name}"     
         |> Request.send
         |> Response.toText
 
     Assert.Equal($"Hello, nice to meet you {name}", output)
 
-    Thread.Sleep(3000)
+    Thread.Sleep(60000)
     let output = 
-        get $"http://localhost:5000/hello_from/{name}"     
+        get $"http://localhost:5000/hello/{name}"     
         |> Request.send
         |> Response.toText
 
@@ -27,7 +27,7 @@ let ``test from an unknown to a friend to a spammer`` () =
 
 
     let output = 
-        get $"http://localhost:5000/hello_from/{name}"     
+        get $"http://localhost:5000/hello/{name}"     
         |> Request.send
         |> Response.toText
 

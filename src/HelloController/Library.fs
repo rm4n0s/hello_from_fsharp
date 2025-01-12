@@ -13,7 +13,8 @@ type HelloCtrl(confs: Configurations, store:Storage) =
         match store.GetPerson(name) with 
         | Some person -> 
             if person.IsFriend then 
-                if DateTime.Now.Subtract(person.LastSeen).Seconds < confs.FriendUntilRepeatInSeconds then 
+                let secs = DateTime.Now.Subtract(person.LastSeen).TotalSeconds
+                if secs < confs.FriendUntilRepeatInSeconds then 
                     Spammer
                 else
                     AuthenticateNameError.NoError  

@@ -10,7 +10,7 @@ open HelloController
 open Giraffe
 
 let confs: Configurations = {
-    FriendUntilRepeatInSeconds = 3
+    FriendUntilRepeatInSeconds = 60
     NameLength = 10
     SpaceLength = 100
 }
@@ -26,7 +26,7 @@ let helloFrom (name : string) : HttpHandler =
 
 let webApp =
     choose [
-        routef "/hello_from/%s"      helloFrom 
+        routef "/hello/%s"      helloFrom 
     ]
 
 
